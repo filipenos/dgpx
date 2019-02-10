@@ -9,3 +9,4 @@ dgpx
 
 # Configuration file
 .env
+.vscode/

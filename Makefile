@@ -29,8 +29,11 @@ coverage:
 	go tool cover -html=coverage.out
 
 build-image: build
-	docker build -t "${name}:${version}" .
+	docker build -t "filipenos/${name}:${version}" .
 
 run-image:
 	touch .env
-	docker run --rm --env-file=.env -p ${port}:8080 "${name}:${version}"
+	docker run --rm --env-file=.env -p ${port}:8080 "filipenos/${name}:${version}"
+
+push-image: build
+	docker push "filipenos/${name}:${version}"
