@@ -1,0 +1,20 @@
+{{define "content"}}
+<div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-default">
+        <div class="panel-heading">Faça a sua consulta de CEP</div>
+        <div class="panel-body">
+            <form method="POST">
+                <div class="form-group">
+                    <input type="text" name="cep" class="form-control input-lg" placeholder="CEP">
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg">
+                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Consultar
+                </button>
+            </form>
+        </div>
+    </div>
+    {{if .Msg}}
+    <div class="alert alert-warning" role="alert">{{.Msg}}</div>
+    {{end}}
+</div>
+{{end}}
