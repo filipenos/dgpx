@@ -6,6 +6,7 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"os"
 	"strings"
 
 	"github.com/filipenos/dgpx/postal"
@@ -20,11 +21,17 @@ func init() {
 	flag.IntVar(&port, "port", port, "port to listen")
 	flag.StringVar(&token, "token", "", "token used in authorization")
 	flag.Parse()
+
+	if v := os.Getenv("TOKEN"); v != "" {
+		log.Println("Using token from env var")
+		token = v
+	}
 }
 
 func main() {
 	http.HandleFunc("/", ZipCodeHandle)
 
+	log.Printf("Running on port :%d", port)
 	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", port), nil))
 }
 
