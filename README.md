@@ -11,3 +11,4 @@ Challenge for dgpx
       -token string
         	token used in authorization
 
+    docker run --rm --publish 8080:8080 -e TOKEN=codigo_do_token filipenos/dgpx:1.0
